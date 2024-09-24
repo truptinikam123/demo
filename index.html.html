@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<body style="background-color:brows;">
+</style>
+    <title> Feedback Form</title>
+</head>
+<body>
+    <h1>Customer Feedback Form</h1>
+    <form id="feedbackForm" action="display.html" method="post">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required><br><br>
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+        
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+        
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" required></textarea><br><br>
+        <button type="submit" onclick="saveData()">Submit Feedback</button>
+    </form>
+
+    <script>
+        function saveData() {
+            const form = document.getElementById('feedbackForm');
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => (data[key] = value));
+ localStorage.setItem('customerFeedback', JSON.stringify(data));
+        }
+    </script>
+</body>
+</html>
+
